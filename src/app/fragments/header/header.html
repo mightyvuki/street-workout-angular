@@ -1,0 +1,18 @@
+<header class="header">
+  <h1>
+    <a routerLink="/">Street Workout Lovćenac</a>
+  </h1>
+
+  <div class="auth-links">
+    <!-- ako korisnik nije ulogovan -->
+     @if(!authService.isLoggedIn()) {
+      <a routerLink="/login" class="btn btn-sm btn-custom">Prijava</a>
+      <a routerLink="/register" class="ms-2">Registracija</a>
+     }
+    @else {
+      <a routerLink="/user/upcoming" class="btn btn-sm btn-custom">Sledeća takmičenja</a>
+      <a routerLink="/user/results" class="btn btn-sm btn-custom">Moji rezultati</a>
+      <button (click)="logout()" class="ms-2 btn btn-sm btn-custom">Odjavi se</button>
+    }
+  </div>
+</header>

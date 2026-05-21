@@ -4,10 +4,33 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
+header {
+  background-color: #1f1f1f;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-links a {
+  color: #f5f5f5;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  margin: 4rem;
+}
+
 .section-title {
   border-bottom: 2px solid #444;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
+  text-align: center;
 }
 
 .card {
@@ -15,6 +38,8 @@ body {
   border: none;
   border-radius: 10px;
   color: #f1f1f1;
+  margin: 1em;
+  padding: 2.5em;
   transition: transform 0.2s ease;
 }
 
@@ -31,14 +56,3 @@ body {
 .btn-custom:hover {
   background-color: #666;
 }
-
-.register-box {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #1f1f1f;
-  color: #f5f5f5;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-}
-

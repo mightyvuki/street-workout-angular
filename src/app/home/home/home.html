@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <h2 class="section-title">Najavljena takmičenja</h2>
+  <div class="row">
+    @if (najavljenaTakmicenja.length == 0) {
+    <div class="alert alert-danger">
+        Nema najavljenih takmičenja
+    </div>
+    }
+    @for (t of najavljenaTakmicenja; track t.id) {
+    <div class="col-md-4 mb-4">
+      <div class="card p-3">
+        <h5>{{ t.naziv }}</h5>
+        <p><strong>Lokacija:</strong> {{ t.lokacija }}</p>
+        <p><strong>Datum:</strong> {{ t.datum }}</p>
+        <p>{{ t.opis }}</p>
+        <a [routerLink]="['/takmicenje/najavljeno', t.id]" class="btn btn-custom">Detaljnije</a>
+      </div>
+    </div>
+    }
+    
+  </div>
+
+  <h2 class="section-title mt-5">Održana takmičenja</h2>
+  <div class="row">
+    @if (najavljenaTakmicenja.length == 0) {
+    <div class="alert alert-danger">
+      Nema odrzanih takmičenja
+    </div>
+    }
+    @for (t of odrzanaTakmicenja; track t.id) {
+    <div class="col-md-4 mb-4">
+      <div class="card p-3">
+        <h5>{{ t.naziv }}</h5>
+        <p><strong>Lokacija:</strong> {{ t.lokacija }}</p>
+        <p><strong>Datum:</strong> {{ t.datum }}</p>
+        <p>{{ t.opis }}</p>
+        <a [routerLink]="['/takmicenje/odrzano', t.id]" class="btn btn-custom">Detaljnije</a>
+      </div>
+    </div>
+    }
+  </div>
+</div>

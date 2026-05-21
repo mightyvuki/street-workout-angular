@@ -1,0 +1,71 @@
+<div class="container mt-5">
+
+  <h2 class="section-title">Novo takmičenje</h2>
+
+  @if (error) {
+    <div class="alert alert-danger">{{ error }}</div>
+  }
+  @if (success) {
+    <div class="alert alert-success">{{ success }}</div>
+  }
+
+  <form [formGroup]="forma" (ngSubmit)="submit()" #takmicenjeForm="ngForm">
+
+    <div class="mb-3">
+      <label class="form-label">Naziv</label>
+      <input type="text" class="form-control" formControlName="naziv">
+      @if (f['naziv'].touched && f['naziv'].invalid) {
+        @if (f['naziv'].errors?.['required']) {
+        <div class="text-danger mt-1">Naziv je obavezan.</div>
+        } @if (f['naziv'].errors?.['maxLength']) {
+            <div class="text-danger mt-1">Naziv je predugačak.</div>
+        }
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Datum</label>
+      <input type="date" class="form-control" formControlName="datum">
+      @if (f['datum'].touched && f['datum'].invalid) {
+        @if (f['datum'].errors?.['required']) {
+        <div class="text-danger mt-1" >Datum je obavezan.</div>
+        } @if (f['datum'].errors?.['datumUGresci']) {
+        <div class="text-danger mt-1" >Datum mora biti danas ili u budućnosti.</div>
+        }
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Lokacija</label>
+      <input type="text" class="form-control" formControlName="lokacija">
+      @if (f['lokacija'].touched && f['lokacija'].invalid) {
+        @if (f['lokacija'].errors?.['required']) {
+        <div class="text-danger mt-1" >Lokacija je obavezna.</div>
+        } @if (f['lokacija'].errors?.['maxLength']) { 
+            <div class="text-danger mt-1">Lokacija je predugačka.</div>
+      }  
+    }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Opis</label>
+      <textarea class="form-control" formControlName="opis" rows="4"></textarea>
+      @if (f['opis'].touched && f['opis'].invalid) {
+        @if (f['opis'].errors?.['required']) {
+        <div class="text-danger mt-1">Opis je obavezan.</div>
+        } @if (f['opis'].errors?.['maxLength']) { 
+        <div class="text-danger mt-1">Opis je predugačak.</div>
+      }
+    }
+    </div>
+
+    <button type="submit" class="btn btn-custom" [disabled]="takmicenjeForm.invalid">
+      @if (submitting) {
+        <span class="spinner-border spinner-border-sm"></span> Dodavanje...
+      } @else {
+        Dodaj takmičenje
+      }
+    </button>
+
+  </form>
+</div>

@@ -1,0 +1,55 @@
+<div class="container mt-5">
+
+  @if (success) {
+    <div class="alert alert-success">{{ success }}</div>
+  }
+
+  @if (error) {
+    <div class="alert alert-danger">{{ error }}</div>
+  }
+
+  <h2 class="section-title">Sva takmičenja</h2>
+
+  <div class="text-end mb-3">
+    <button class="btn btn-custom" (click)="addNovo()">+ Dodaj novo</button>
+  </div>
+
+  @if (loading) {
+    <div class="text-center mt-5">
+      <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Učitavanje...</span>
+      </div>
+    </div>
+  } @else if (!takmicenja || takmicenja.length === 0) {
+    <div class="alert alert-warning">Nema evidentiranih takmičenja.</div>
+  } @else {
+    <div class="table-responsive">
+      <table class="table table-dark table-hover text-center align-middle rounded-3 overflow-hidden">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Naziv</th>
+            <th>Lokacija</th>
+            <th>Datum</th>
+            <th>Akcije</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (t of takmicenja; track t.id) {
+            <tr>
+              <td>{{ t.id }}</td>
+              <td>{{ t.naziv }}</td>
+              <td>{{ t.lokacija }}</td>
+              <td>{{ t.datum | date:'dd.MM.yyyy' }}</td>
+              <td>
+                <button class="btn btn-sm btn-custom me-1" (click)="izmeni(t.id)">Izmeni</button>
+                <button class="btn btn-sm btn-danger" (click)="obrisi(t.id)">Obriši</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+</div>

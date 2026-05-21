@@ -1,0 +1,73 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Izmeni takmičenje</h2>
+
+  @if (ucitavanje) {
+    <div class="text-center">
+      <div class="spinner-border text-light"></div>
+      <p class="mt-2">Učitavanje podataka...</p>
+    </div>
+  } @else {
+
+    @if (error) {
+      <div class="alert alert-danger">{{ error }}</div>
+    }
+
+    @if (success) {
+      <div class="alert alert-success">{{ success }}</div>
+    }
+
+    <form [formGroup]="forma" (ngSubmit)="submit()" class="add-box">
+
+      <div class="mb-3">
+        <label class="form-label">Naziv takmičenja:</label>
+        <input type="text" class="form-control"
+          formControlName="naziv"
+          [ngClass]="{'is-invalid': f['naziv'].touched && f['naziv'].invalid}">
+        @if (f['naziv'].touched && f['naziv'].invalid) {
+          <div class="text-danger mt-1">Naziv je obavezan i ne sme biti duži od 100 karaktera.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Datum:</label>
+        <input type="date" class="form-control"
+          formControlName="datum"
+          [ngClass]="{'is-invalid': f['datum'].touched && f['datum'].invalid}">
+        @if (f['datum'].touched && f['datum'].invalid) {
+          <div class="text-danger mt-1">Datum je obavezan.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Lokacija:</label>
+        <input type="text" class="form-control"
+          formControlName="lokacija"
+          [ngClass]="{'is-invalid': f['lokacija'].touched && f['lokacija'].invalid}">
+        @if (f['lokacija'].touched && f['lokacija'].invalid) {
+          <div class="text-danger mt-1">Lokacija je obavezna i ne sme biti duža od 100 karaktera.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Opis:</label>
+        <textarea class="form-control" formControlName="opis" rows="4"
+          [ngClass]="{'is-invalid': f['opis'].touched && f['opis'].invalid}"></textarea>
+        @if (f['opis'].touched && f['opis'].invalid) {
+          <div class="text-danger mt-1">Opis je obavezan i ne sme biti duži od 500 karaktera.</div>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-custom w-100" [disabled]="submitting || forma.invalid">
+        @if (submitting) {
+          <span class="spinner-border spinner-border-sm"></span> Čuvanje...
+        } @else {
+          Sačuvaj takmičenje
+        }
+      </button>
+
+      <div class="mt-3 text-center">
+        <a class="text-muted" routerLink="/admin/takmicenja">Povratak na listu takmičenja</a>
+      </div>
+    </form>
+  }
+</div>

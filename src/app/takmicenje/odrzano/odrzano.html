@@ -1,0 +1,63 @@
+<div class="container mt-5">
+
+  @if (loading) {
+    <div class="text-center mt-5">
+      <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Učitavanje...</span>
+      </div>
+    </div>
+  } @else if (error) {
+    <div class="alert alert-danger text-center mt-4">
+      {{ error }}
+    </div>
+  } @else if (takmicenje) {
+
+    <h2 class="section-title">{{ takmicenje.naziv }}</h2>
+
+    <div class="row mb-4">
+      @if (success) {
+        <div class="alert alert-success text-center">{{ success }}</div>
+      }
+
+      <p>{{ takmicenje.opis }}</p>
+      <p>Mesto: <strong>{{ takmicenje.lokacija }}</strong></p>
+      <p>Datum: <strong>{{ takmicenje.datum | date:'dd.MM.yyyy' }}</strong></p>
+      <p>
+        Organizator:
+        <strong>{{ takmicenje.organizator?.ime }} {{ takmicenje.organizator?.prezime }}</strong>
+      </p>
+    </div>
+
+    @if (odrzano) {
+      @for (entry of (rezultati | keyvalue); track entry.key) {
+        <h3 class="section-title mt-4">{{ entry.key }}</h3>
+        <div class="row">
+          <table class="table table-bordered table-dark text-center">
+            <thead>
+              <tr>
+                <th>Ime i prezime</th>
+                <th>Disciplina</th>
+                <th>Rezultat</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (r of entry.value; track r.id) {
+                <tr>
+                  <td>{{ r.imeIPrezime }}</td>
+                  <td>{{ r.nazivDiscipline }}</td>
+                  <td>{{ r.rezultat }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    }
+
+  } @else {
+    <div class="alert alert-warning text-center">
+      Nema podataka o takmičenju.
+    </div>
+  }
+
+</div>

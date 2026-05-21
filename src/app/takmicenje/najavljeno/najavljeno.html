@@ -1,0 +1,55 @@
+<div class="container">
+  @if (takmicenje) {
+    <h2 class="section-title">{{ takmicenje.naziv }}</h2>
+
+    @if (success) {
+      <div class="alert alert-success">{{ success }}</div>
+    }
+    @if (error) {
+      <div class="alert alert-danger">{{ error }}</div>
+    }
+
+    <p>{{ takmicenje.opis }}</p>
+    <p>Mesto: <strong>{{ takmicenje.lokacija }}</strong></p>
+    <p>Datum: <strong>{{ takmicenje.datum }}</strong></p>
+    <p>
+      Organizator:
+      <strong>{{ takmicenje.organizator?.ime }} {{ takmicenje.organizator?.prezime }}</strong>
+    </p>
+
+    <br />
+
+    <div class="row">
+      <table class="table table-bordered table-dark text-center">
+        <thead>
+          <tr>
+            <th>Ime i prezime</th>
+            <th>Datum prijave</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of prijave; track p.id) {
+            <tr>
+              <td>{{ p.korisnik.ime }} {{ p.korisnik.prezime }}</td>
+              <td>{{ p.datumPrijave | date}}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <br />
+
+    @if (ulogovan) {
+      @if (jePrijavljen()) {
+        <button class="btn btn-danger" (click)="odjaviSe()">Odjavi se</button>
+      } @else {
+        <button class="btn btn-custom" (click)="prijaviSe()">Prijavi se</button>
+      }
+    } @else {
+      <p>Morate biti prijavljeni da biste se prijavili za takmičenje.</p>
+    }
+  } @else {
+    <p>Učitavanje takmičenja...</p>
+  }
+</div>

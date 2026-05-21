@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2 class="section-title">Sledeća takmičenja</h2>
+
+  @if (loading) {
+    <p>Učitavanje...</p>
+  } @else if (sledeca.length === 0) {
+    <p>Niste prijavljeni ni na jedno takmičenje.</p>
+  } @else {
+    <table class="table table-bordered table-dark text-center mt-3">
+      <thead>
+        <tr>
+          <th>Naziv</th>
+          <th>Mesto</th>
+          <th>Datum</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (s of sledeca; track s.id) {
+          <tr>
+            <td>{{ s.naziv }}</td>
+            <td>{{ s.lokacija }}</td>
+            <td>{{ s.datum | date: 'dd.MM.yyyy' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

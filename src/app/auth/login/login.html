@@ -1,0 +1,58 @@
+<div class="container mt-5 register-box" style="max-width: 400px;">
+  <h3 class="text-center mb-4">Prijava</h3>
+
+  <form (ngSubmit)="submit(formRef)" #formRef="ngForm" novalidate>
+    <div class="mb-3">
+    <label class="form-label">Korisničko ime:</label>
+      <input
+        type="username"
+        id="username"
+        name="username"
+        class="form-control"
+        required
+        minlength="3"
+        [(ngModel)]="username"
+        #usernameRef="ngModel"
+      />
+      @if (usernameRef.invalid && (usernameRef.dirty || usernameRef.touched)) {
+        <div class="alert alert-danger mt-1">
+          @if (usernameRef.errors?.['required']) {
+            <div>Korisničko ime je obavezno.</div>
+          }
+          @if (usernameRef.errors?.['minlength']) {
+            <div>Korisničko ime mora imati najmanje 3 karaktera.</div>
+          }
+        </div>
+      }
+    </div>
+    
+    <div class="mb-3">
+    <label class="form-label">Lozinka:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          required
+          minlength="3"
+          [(ngModel)]="password"
+          #passwordRef="ngModel"
+        />
+        @if (passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)) {
+          <div class="alert alert-danger mt-1">
+            @if (passwordRef.errors?.['required']) {
+              <div>Lozinka je obavezna.</div>
+            }
+            @if (passwordRef.errors?.['minlength']) {
+              <div>Lozinka mora imati najmanje 3 karaktera.</div>
+            }
+          </div>
+        }
+    </div>
+    
+
+    <button type="submit" class="btn btn-custom w-100" [disabled]="formRef.invalid">
+      Prijava
+    </button>
+  </form>
+</div>

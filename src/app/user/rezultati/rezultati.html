@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2 class="section-title">Moji rezultati</h2>
+    @if(rezultati.length === 0) {
+  <p>Niste učestvovali ni na jednom takmičenju.</p>
+    } @else {
+  <table class="table table-bordered table-dark text-center">
+    <thead>
+      <tr>
+        <th>Naziv takmičenja</th>
+        <th>Naziv discipline</th>
+        <th>Broj ponavljanja</th>
+      </tr>
+    </thead>
+    <tbody>
+    @for (r of rezultati; track r.id) {
+      <tr>
+        <td>{{ r.nazivTakmicenja }}</td>
+        <td>{{ r.nazivDiscipline }}</td>
+        <td>{{ r.rezultat }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+</div>
