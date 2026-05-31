@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prikazTakmicara" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bdff1ebb-bac6-4aff-9863-63fef31624ac">
+	<parameter name="imeTakmicenja" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ime" class="java.lang.String"/>
+	<field name="prezime" class="java.lang.String"/>
+	<field name="datumRodjenja" class="java.util.Date"/>
+	<variable name="brojTakmicara" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{ime}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="0" width="400" height="79" uuid="05fb94f9-80dd-4e44-9b7c-72f44f6eb303"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="20" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Izveštaj o prijavljenim takmičarima za takmičenje]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="0" width="400" height="45" uuid="b3689514-f57d-481a-b27c-a2640536f5b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{imeTakmicenja}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="205" y="0" width="150" height="30" forecolor="#FFFFFF" backcolor="#444444" uuid="0d138018-59f2-4f9e-936f-9d6ce04fabe3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2fb43326-060d-49b3-999d-62306131fec3"/>
+				</reportElement>
+				<box padding="1">
+					<pen lineWidth="0.25" lineColor="#050000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Prezime]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="355" y="0" width="150" height="30" forecolor="#FFFFFF" backcolor="#444444" uuid="d4985292-1bc1-49e9-9a12-de947fd19c28">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52270590-9ac6-4247-af30-5e7d0e953eec"/>
+				</reportElement>
+				<box padding="1">
+					<pen lineWidth="0.25" lineColor="#050000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Datum rođenja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="55" y="0" width="150" height="30" forecolor="#FFFFFF" backcolor="#444444" uuid="ac119626-8de8-4001-82d3-d6bace0239a4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="efca9504-25d3-4afe-9624-68ed51727584"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box padding="1">
+					<pen lineWidth="0.25" lineColor="#050000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Ime]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement mode="Opaque" x="55" y="0" width="150" height="30" forecolor="#FFFFFF" backcolor="#1F1F1F" uuid="246b6c31-e846-47a8-9e9d-55f3fd538075">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="efca9504-25d3-4afe-9624-68ed51727584"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box padding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="205" y="0" width="150" height="30" forecolor="#FFFFFF" backcolor="#1F1F1F" uuid="d3a12918-4002-4ce2-8063-0e66d2356daa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2fb43326-060d-49b3-999d-62306131fec3"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box padding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prezime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="355" y="0" width="150" height="30" forecolor="#FFFFFF" backcolor="#1F1F1F" uuid="a25798bd-67cf-42f9-8dc9-782c02ae6ef3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52270590-9ac6-4247-af30-5e7d0e953eec"/>
+				</reportElement>
+				<box padding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" pdfEncoding="Cp1250" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datumRodjenja}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="27" width="100" height="30" uuid="94675796-283f-43f6-9047-6a026b82bdeb"/>
+				<textElement>
+					<font fontName="DejaVu Sans" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="280" y="14" width="100" height="30" uuid="e2d70069-0fcf-42e5-8382-bc15efcac2ad"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{brojTakmicara}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="14" width="100" height="30" uuid="2a207095-3687-462c-9172-9fab8ad367c2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Ukupno takmičara:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
